@@ -38,6 +38,7 @@ def callinguserdata(username, input_str):
         queryout+=tmp_block
         return
     else:
+        
         return
 def userdatainsertion(username:str, left_time:str, right_time:str, total_time:int,insertionobj:str, title=None, description=None,Push_time=None):
     if Push_time==None:
@@ -86,6 +87,7 @@ def object_insertion(username,input_str, unread):
     mycursor.execute(queryout+";")"""
     return
 def mysql_to_csv():
+    #in future
     pass
 def timestampcalout(word:str):
     tokens = word[10::].split(":")
