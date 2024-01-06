@@ -1,8 +1,6 @@
 import mysql.connector
 import time
 from discordkeysmain import *
-
-
 mydb = mysql.connector.connect(
   host=host,
   user= user,
@@ -10,13 +8,6 @@ mydb = mysql.connector.connect(
   database=database
 )
 mycursor = mydb.cursor()
-#mycursor.execute("CREATE TABLE IF NOT EXISTS storage(username VARCHAR[255],left VARCHAR[5], right VARCHAR[5],total_time INT,title VARCHAR[255],description TEXT,Post_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);")
-#mycursor.execute("USE userdata")
-#mycursor.execute("DROP TABLE users")
-#mycursor.execute("CREATE TABLE IF NOT EXISTS users(username VARCHAR(255), left_time VARCHAR(5), right_time VARCHAR(5), total_time VARCHAR(5),Title VARCHAR(255), Description TEXT, Push_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);")
-#mycursor.execute("INSERT INTO users(username, left_time, right_time, total_time, Title, Description) VALUES('john', '12:05','13:05','01:00','work', 'fuck my life bitchs');")
-#mycursor.execute("SELECT * FROM users WHERE username='john' AND month(Push_time)=1 AND year(Push_time)=2024 AND day(Push_time)=1;")
-#mycursor.execute("SELECT username, total_time, Title FROM users;")
 def queryout(outputlist=None):
     if outputlist==None:
         outputlist = []
@@ -74,7 +65,7 @@ def buildtable(input_str):
     
     mycursor.execute(queryout+" GROUP BY username;")
     return    
-def pop_insertion(username,input_str, unread):
+def object_insertion(username,input_str, unread):
     tokens = input_str.split(" ")
     queryout = f"SELECT * FROM users WHERE username='{username}'"
     opts = ["year","month","day"]
@@ -96,8 +87,6 @@ def pop_insertion(username,input_str, unread):
     return
 def mysql_to_csv():
     pass
-word = "2020-01-01 23:59:58"
-big_word = "2020-01-01 24:00:00"
 def timestampcalout(word:str):
     tokens = word[10::].split(":")
     sum = (int(tokens[0])*3600)+(int(tokens[1])*60)+int(tokens[2])
@@ -119,24 +108,3 @@ def centerinsertion(left:str, right:str):
     total_distance = timestampcalout(right)-timestampcalout(left)
     print(total_distance//2)
     return timestampcalin(left_most+(total_distance//2))
-
-#mycursor.execute("CREATE TABLE usersnames(users VARCHAR(5),fuck INT)")
-#ycursor.execute(f"INSERT INTO fuck(users, fuck)VALUES('john', {weight}); ")
-#mydb.commit()
-#print(mycursor.execute("SELECT * FROM fuck WHERE users='john';"))
-#mycursor.execute("CREATE TABLE people(fuk)")#, left1, right1);") #,Total_Time,Title,Description,Upload_Time);")
-#print(mydb) 
-#mycursor.execute("SELECT table_name FROM information_schema.tables WHERE table_type='BASE TABLE' AND table_schema='userdata';")
-if __name__ == "__main__":
-   #print(callinguserdata("john","2024,1,1"))
-    print(centerinsertion(word,big_word))
-    #print(timestampcalout(word))
-    #word = timestampcalout(word)
-    #print(timestampcalin(word))
-    pass
-#for x in mycursor:
-#    print(x)
-#    print(type(x))
-#mydb.commit()
-#    for n in mycursor:
-#        print(n)
